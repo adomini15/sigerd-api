@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const {isDate, isInt} = require('validator')
+const { isDate, isInt } = require('validator')
 
 const profileSchema = new mongoose.Schema({
   firstname: {
@@ -15,10 +15,10 @@ const profileSchema = new mongoose.Schema({
     validate: [isDate, "Should be a correct date"]
   },
   dni: {
-    type: Number,
+    type: String,
     minLength: [11, 'Should be only 11 digits'],
     maxLength: [11, 'Should be only 11 digits'],
-    validate: [isInt, "Should be only integers"],
+    // validate: [isInt, "Should be only integers"],
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
