@@ -17,7 +17,7 @@ const dbURI = process.env.DB_URI
 const app = express()
 
 // preconfig mongoose
-mongoose.set('runValidators', true) 
+mongoose.set('runValidators', true)
 
 // *** connect to atlas mongodb
 mongoose.connect(dbURI, {
@@ -26,9 +26,9 @@ mongoose.connect(dbURI, {
   useCreateIndex: true,
   useFindAndModify: false
 }).then(() => {
-app.listen(SERVER_PORT)
+  app.listen(SERVER_PORT)
 }).catch((err) => {
-console.log(err)
+  console.log(err)
 })
 
 
@@ -52,10 +52,10 @@ const courseRoute = require('./routes/Course/course.route')
 
 // cors
 
-app.use(cors({
-  origin: 'http://localhost:3001',
-  credentials: true
-}))
+// app.use(cors({
+//   origin: 'http://localhost:3001',
+//   credentials: true
+// }))
 
 // cookie-parser
 app.use(cookieParser())
@@ -68,7 +68,7 @@ app.use(morgan('dev'))
 
 // *** routes
 
-app.use('/users',userRoute)
+app.use('/users', userRoute)
 app.use(authRoute)
 app.use('/profiles', profileRoute)
 app.use('/roles', roleRoute)
@@ -77,4 +77,4 @@ app.use('/students', studentRoute)
 app.use('/fathers', fatherRoute)
 app.use('/mothers', motherRoute)
 app.use('/tutors', tutorRoute)
-app.use('/courses',courseRoute)
+app.use('/courses', courseRoute)
