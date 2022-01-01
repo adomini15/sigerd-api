@@ -4,7 +4,8 @@
   "description": "Backend API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app",
+    "serve": "nodemon app",
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gian Carlos Perez Michel",
