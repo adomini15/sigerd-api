@@ -51,7 +51,7 @@ const tutorRoute = require("./routes/Student/tutor.route");
 const courseRoute = require("./routes/Course/course.route");
 
 // proxy (important for heroku in production)
-app.enable("trust proxy");
+app.set("trust proxy", 1);
 
 // cors
 
