@@ -58,7 +58,10 @@ app.set("trust proxy", 1);
 app.use(
 	cors({
 		credentials: true,
-		origin: process.env.NODE_ENV == "production" ? "" : "http://localhost:3001",
+		origin:
+			process.env.NODE_ENV == "production"
+				? "https://sigerd-web.herokuapp.com"
+				: "http://localhost:3001",
 	})
 );
 

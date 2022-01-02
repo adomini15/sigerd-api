@@ -28,6 +28,7 @@ module.exports.login = async (req, res) => {
 			maxAge: 1000 * 60 * 60 * 24 * 3,
 			httpOnly: true,
 			secure: process.env.NODE_ENV == "production",
+			domain: ".herokuapp.com",
 		});
 
 		res.status(200).json({ ok: 1, message: "login done correctly" });
@@ -42,6 +43,7 @@ module.exports.logout = (req, res) => {
 		maxAge: 1,
 		httpOnly: true,
 		secure: process.env.NODE_ENV == "production",
+		domain: ".herokuapp.com",
 	});
 	res.status(200).json({ ok: 1, message: "logout done correctly" });
 };
