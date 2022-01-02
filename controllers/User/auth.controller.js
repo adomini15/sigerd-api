@@ -28,7 +28,7 @@ module.exports.login = async (req, res) => {
 			maxAge: 1000 * 60 * 60 * 24 * 3,
 			httpOnly: true,
 			secure: true,
-			domain: "herokuapp.com",
+			domain: ".herokuapp.com",
 			sameSite: "none",
 		});
 
@@ -44,7 +44,7 @@ module.exports.logout = (req, res) => {
 		maxAge: 1,
 		httpOnly: true,
 		secure: true,
-		domain: "herokuapp.com",
+		domain: ".herokuapp.com",
 		sameSite: "none",
 	});
 	res.status(200).json({ ok: 1, message: "logout done correctly" });
