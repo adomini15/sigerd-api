@@ -24,15 +24,15 @@ module.exports.login = async (req, res) => {
 
 		const token = createToken(user._id);
 
-		res.cookie("jwt", token, {
-			maxAge: 1000 * 60 * 60 * 24 * 3,
-			httpOnly: true,
-			secure: process.env.NODE_ENV == "production",
-			domain: "sigerd-web.herokuapp.com",
-			sameSite: "none",
-		});
+		// res.cookie("jwt", token, {
+		// 	maxAge: 1000 * 60 * 60 * 24 * 3,
+		// 	httpOnly: true,
+		// 	secure: process.env.NODE_ENV == "production",
+		// 	domain: "sigerd-web.herokuapp.com",
+		// 	sameSite: "none",
+		// });
 
-		res.status(200).json({ ok: 1, message: "login done correctly" });
+		res.status(200).json({ ok: 1, token, message: "login done correctly" });
 	} catch (err) {
 		const errors = handleErrors(err);
 		res.status(400).json({ errors });
@@ -40,12 +40,12 @@ module.exports.login = async (req, res) => {
 };
 
 module.exports.logout = (req, res) => {
-	res.cookie("jwt", "", {
-		maxAge: 1,
-		httpOnly: true,
-		secure: process.env.NODE_ENV == "production",
-		domain: "sigerd-web.herokuapp.com",
-		sameSite: "none",
-	});
+	// res.cookie("jwt", "", {
+	// 	maxAge: 1,
+	// 	httpOnly: true,
+	// 	secure: process.env.NODE_ENV == "production",
+	// 	domain: "sigerd-web.herokuapp.com",
+	// 	sameSite: "none",
+	// });
 	res.status(200).json({ ok: 1, message: "logout done correctly" });
 };

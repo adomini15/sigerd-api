@@ -50,14 +50,17 @@ const tutorRoute = require("./routes/Student/tutor.route");
 // Course Context
 const courseRoute = require("./routes/Course/course.route");
 
-// proxy (important for heroku in production)
-app.enable("trust proxy");
+// middlewares
+const { validatedAuth } = require("./middlewares/Auth/Auth");
 
-// cors
+// proxy (important for heroku in production)
+// app.enable("trust proxy");
+
+// // cors
 
 app.use(
 	cors({
-		credentials: true,
+		// credentials: true,
 		origin:
 			process.env.NODE_ENV == "production"
 				? "https://sigerd-web.herokuapp.com"
@@ -66,7 +69,7 @@ app.use(
 );
 
 // cookie-parser
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use(express.json());
 
@@ -77,11 +80,11 @@ app.use(morgan("dev"));
 
 app.use("/users", userRoute);
 app.use(authRoute);
-app.use("/profiles", profileRoute);
-app.use("/roles", roleRoute);
-app.use("/actions", actionRoute);
-app.use("/students", studentRoute);
-app.use("/fathers", fatherRoute);
-app.use("/mothers", motherRoute);
-app.use("/tutors", tutorRoute);
-app.use("/courses", courseRoute);
+app.use("/profiles", validatedAuth, profileRoute);
+app.use("/roles", validatedAuth, roleRoute);
+app.use("/actions", validatedAuth, actionRoute);
+app.use("/students", validatedAuth, studentRoute);
+app.use("/fathers", validatedAuth, fatherRoute);
+app.use("/mothers", validatedAuth, motherRoute);
+app.use("/tutors", validatedAuth, tutorRoute);
+app.use("/courses", validatedAuth, courseRoute);
