@@ -62,7 +62,6 @@ app.use(
 			process.env.NODE_ENV == "production"
 				? "https://sigerd-web.herokuapp.com"
 				: "http://localhost:3001",
-		preflightContinue: true,
 	})
 );
 
