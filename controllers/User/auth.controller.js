@@ -27,8 +27,9 @@ module.exports.login = async (req, res) => {
 		res.cookie("jwt", token, {
 			maxAge: 1000 * 60 * 60 * 24 * 3,
 			httpOnly: true,
-			secure: process.env.NODE_ENV == "production",
-			domain: ".herokuapp.com",
+			secure: true,
+			domain: "herokuapp.com",
+			sameSite: "none",
 		});
 
 		res.status(200).json({ ok: 1, message: "login done correctly" });
@@ -42,8 +43,9 @@ module.exports.logout = (req, res) => {
 	res.cookie("jwt", "", {
 		maxAge: 1,
 		httpOnly: true,
-		secure: process.env.NODE_ENV == "production",
-		domain: ".herokuapp.com",
+		secure: true,
+		domain: "herokuapp.com",
+		sameSite: "none",
 	});
 	res.status(200).json({ ok: 1, message: "logout done correctly" });
 };
