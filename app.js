@@ -51,7 +51,7 @@ const tutorRoute = require("./routes/Student/tutor.route");
 const courseRoute = require("./routes/Course/course.route");
 
 // proxy (important for heroku in production)
-app.set("trust proxy", "127.0.0.1");
+app.enable("trust proxy");
 
 // cors
 
@@ -62,6 +62,7 @@ app.use(
 			process.env.NODE_ENV == "production"
 				? "https://sigerd-web.herokuapp.com"
 				: "http://localhost:3001",
+		preflightContinue: true,
 	})
 );
 
